@@ -27,16 +27,16 @@ $svg-default: #bbc0ff;
     flex-direction: column;
 }
 
-.card-bg {
-    border-radius: 1rem 1rem 0 0;
-    height: 20%;
-    overflow: hidden;
-    z-index: -1;
-    img {
-        margin-top: -10px;
-        margin-left: 60%;
-    }
-}
+// .card-bg {
+//     border-radius: 1rem 1rem 0 0;
+//     height: 20%;
+//     overflow: hidden;
+//     z-index: -1;
+//     img {
+//         margin-top: -10px;
+//         margin-left: 60%;
+//     }
+// }
 
 body {
     background-color: $very-dark-blue;
@@ -53,116 +53,157 @@ $colors: (
 
 @each $key, $value in $colors {
     .#{$key}-bg {
-        background-color: #{$value};
+        background-image: url("/images/icon-#{$key}.svg"),
+            linear-gradient(to bottom, #{$value} 50%, transparent 50%);
     }
 }
 
-#content {
-    @include grid-default-gap;
-    grid-template-columns: 1fr 3fr;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 50%;
+.card-bg {
+    background-repeat: no-repeat;
+    background-position: 90% -5%;
 }
 
-#user-card {
-    background-color: $dark-blue;
-    border-radius: 1rem;
-    grid-row: 1 / 2;
-    position: relative;
+// @media (max-width: 960px), (orientation: portrait) {
+//     #content {
+//         @include flex-cl;
+//         gap: 1rem;
+//         margin: 10% 5%;
+//         #user-card {
+//             background-color: $dark-blue;
+//             .profile {
+//                 background-color: $blue;
+//                 border-radius: 1rem;
+//                 .user-profile-img {
+//                     border: 3px solid white;
+//                     border-radius: 50%;
+//                     width: 15%;
+//                     grid-area: img;
+//                 }
+//                 .report-for {
+//                     grid-area: report;
+//                 }
+//                 .user-name {
+//                     grid-area: name;
+//                 }
+//             }
+//         }
+//     }
 
-    .profile {
-        @include flex-cl;
-        background-color: $blue;
+//     #task-container {
+//         @include flex-cl;
+//         gap: 1rem;
+//     }
+// }
+
+@media (orientation: landscape) {
+    #content {
+        @include grid-default-gap;
+        grid-template-columns: 1fr 3fr;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75vw;
+        max-width: 1300px;
+        // height: 50%;
+        aspect-ratio: 11 / 5;
+    }
+
+    #task-container {
+        @include grid-default-gap;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+
+    #user-profile {
+        min-width: 250px;
+        background-color: $dark-blue;
         border-radius: 1rem;
-        height: 70%;
-        padding: 2rem;
-        .user-profile-img {
-            border-radius: 50%;
-            border: 3px solid white;
-            max-width: 50%;
-            margin-bottom: 30%;
-        }
-        .report-for {
-            color: $pale-blue;
-        }
-        .user-name {
-            font-size: 2.3rem;
-            font-weight: 300;
-        }
-    }
-    .uc-sub-menu {
-        @include flex-cl;
-        height: 30%;
-        padding: 0 1.5rem;
-        justify-content: center;
-        gap: 1rem;
-        text-decoration: none;
+        grid-row: 1 / 2;
+        position: relative;
 
-        li {
-            list-style: none;
-            line-height: 2.5;
+        .profile-info {
+            @include flex-cl;
+            background-color: $blue;
+            border-radius: 1rem;
+            height: 70%;
+            padding: 3rem 2rem;
+            .user-profile-img {
+                border-radius: 50%;
+                border: 3px solid white;
+                max-width: 40%;
+                margin-bottom: 20%;
+            }
+            .report-for {
+                color: $pale-blue;
+            }
+            .user-name {
+                font-size: 3rem;
+                font-weight: 300;
+            }
+        }
+        .profile-menu {
+            @include flex-cl;
+            height: 30%;
+            padding: 0 1.5rem;
+            justify-content: center;
+            gap: 1rem;
+            text-decoration: none;
+            font-size: 1.2rem;
             a {
                 text-decoration: none;
                 color: $pale-blue;
             }
-            a:hover {
+            a:hover,
+            .selected {
                 color: #fff;
             }
         }
+    }
 
-        .selected {
-            color: #fff;
+    .task-card {
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column-reverse;
+        height: 100%;
+        width: 100%;
+        min-height: 240px;
+        min-width: 250px;
+    }
+
+    .card-content {
+        background-color: $dark-blue;
+        @include flex-cl;
+        border-radius: 1rem;
+        height: 80%;
+        width: 100%;
+        padding: 0 1.5rem;
+
+        .card-header {
+            font-size: 1.2rem;
+            font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-basis: 40%;
+
+            .header-menu:hover {
+                filter: brightness(0) invert(1);
+            }
+        }
+
+        .card-data {
+            @include flex-cl;
+            flex-basis: 40%;
+            justify-content: space-between;
+            .tc-time {
+                font-size: 4rem;
+                font-weight: 300;
+            }
+            .tc-previous {
+                font-size: 1.2rem;
+                color: $pale-blue;
+            }
         }
     }
-}
-
-.task-card {
-    height: 100%;
-    max-height: 240px;
-    max-width: 250px;
-    position: relative;
-}
-
-.card-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    background-color: $dark-blue;
-    position: absolute;
-    margin-top: -4%;
-    border-radius: 1rem;
-    height: 86%;
-    width: 100%;
-    padding: 1.5rem;
-}
-
-.card-header {
-    font-size: 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-.header-menu:hover {
-    filter: brightness(0) invert(1);
-}
-
-.tc-time {
-    font-size: 3.5rem;
-    font-weight: 300;
-}
-
-.tc-previous {
-    font-size: 1rem;
-    color: $pale-blue;
-}
-
-#task-container {
-    @include grid-default-gap;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
 }

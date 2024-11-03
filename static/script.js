@@ -20,19 +20,20 @@ function taskElement(category) {
     const counter = category.timeframes[state.timeframe];
     this.element = document.createElement("div");
     this.element.innerHTML = /*html*/ `
-    <div class="task-card">
-        <div class="card-bg ${title}-bg">
-            <img src="images/icon-${title}.svg" alt="${category.title} icon"/>
-        </div>
-        <div class="card-info">
+    <div class="task-card ${title}-bg card-bg">
+
+        <div class="card-content">
             <div class="card-header">
                 <span class="header-title">${category.title}</span>
                 <a href="#" class="header-menu"><img src="images/icon-ellipsis.svg"/></a>
             </div>
-            <p class="tc-time">${counter.current}hrs</p>
-            <p class="tc-previous">${state.previous[state.timeframe]} - ${
+            <div class="card-data">
+                <p class="tc-time">${counter.current}hrs</p>
+                <p class="tc-previous">${state.previous[state.timeframe]} - ${
         counter.previous
     }hrs</p>
+            </div>
+
 
         </div>
     </div>
