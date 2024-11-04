@@ -39,6 +39,116 @@ body {
   background-position: 90% -5%;
 }
 
+.report-for {
+  color: hsl(236, 100%, 87%);
+}
+
+.profile-menu a {
+  text-decoration: none;
+  color: hsl(236, 100%, 87%);
+}
+.profile-menu a:hover,
+.profile-menu .selected {
+  color: #fff;
+}
+
+.header-menu:hover {
+  filter: brightness(0) invert(1);
+}
+
+.card-content {
+  background-color: hsl(235, 46%, 20%);
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  height: 80%;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+@media (max-width: 960px), (orientation: portrait) {
+  a {
+    font-size: 4vmin;
+  }
+  #content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 10% 5%;
+    height: 100%;
+  }
+  #content #user-profile {
+    background-color: hsl(235, 46%, 20%);
+    border-radius: 1rem;
+  }
+  #content #user-profile .profile-info {
+    display: grid;
+    grid-template-columns: auto 1fr 3fr auto;
+    grid-template-rows: auto auto;
+    grid-column-gap: 1rem;
+    background-color: hsl(246, 80%, 60%);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+  #content #user-profile .profile-info .user-profile-img {
+    grid-column: 2;
+    grid-row: 2/span 2;
+    border: 3px solid white;
+    border-radius: 50%;
+    width: 100%;
+  }
+  #content #user-profile .profile-info .report-for {
+    grid-column: 3;
+    grid-row: 2;
+    align-self: end;
+    justify-self: left;
+  }
+  #content #user-profile .profile-info .user-name {
+    grid-column: 3;
+    grid-row: 3;
+    font-size: 6.5vmin;
+  }
+  #content #user-profile .profile-menu {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  #task-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 1.5rem;
+  }
+  #task-container .task-card {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column-reverse;
+    min-height: 150px;
+    aspect-ratio: 2/1;
+  }
+  #task-container .card-header {
+    font-size: 5vmin;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex: 0 1 40%;
+  }
+  #task-container .card-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 1 60%;
+  }
+  #task-container .card-data .tc-time {
+    font-size: 10vmin;
+    font-weight: 300;
+  }
+  #task-container .card-data .tc-previous {
+    font-size: 3.5vmin;
+    color: hsl(236, 100%, 87%);
+  }
+}
 @media (orientation: landscape) {
   #content {
     display: grid;
@@ -81,9 +191,6 @@ body {
     max-width: 40%;
     margin-bottom: 20%;
   }
-  #user-profile .profile-info .report-for {
-    color: hsl(236, 100%, 87%);
-  }
   #user-profile .profile-info .user-name {
     font-size: 3rem;
     font-weight: 300;
@@ -98,14 +205,6 @@ body {
     text-decoration: none;
     font-size: 1.2rem;
   }
-  #user-profile .profile-menu a {
-    text-decoration: none;
-    color: hsl(236, 100%, 87%);
-  }
-  #user-profile .profile-menu a:hover,
-  #user-profile .profile-menu .selected {
-    color: #fff;
-  }
   .task-card {
     border-radius: 1rem;
     display: flex;
@@ -115,22 +214,13 @@ body {
     min-height: 240px;
     min-width: 250px;
   }
-  .card-content {
-    background-color: hsl(235, 46%, 20%);
-    display: flex;
-    flex-direction: column;
-    border-radius: 1rem;
-    height: 80%;
-    width: 100%;
-    padding: 0 1.5rem;
-  }
   .card-content .card-header {
     font-size: 1.2rem;
     font-weight: 500;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-basis: 40%;
+    flex: 0 1 40%;
   }
   .card-content .card-header .header-menu:hover {
     filter: brightness(0) invert(1);
@@ -138,15 +228,15 @@ body {
   .card-content .card-data {
     display: flex;
     flex-direction: column;
-    flex-basis: 40%;
-    justify-content: space-between;
+    gap: 0.5rem;
+    flex: 0 1 60%;
   }
   .card-content .card-data .tc-time {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 300;
   }
   .card-content .card-data .tc-previous {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: hsl(236, 100%, 87%);
   }
 }/*# sourceMappingURL=style.css.map */
