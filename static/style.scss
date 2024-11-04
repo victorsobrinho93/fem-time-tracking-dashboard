@@ -92,7 +92,7 @@ $colors: (
     // gap: 1rem;
 }
 
-@media (max-width: 960px), (orientation: portrait) {
+@media (orientation: portrait) {
     a {
         font-size: 4vmin;
     }
